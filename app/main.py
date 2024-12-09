@@ -17,7 +17,7 @@ class Animal:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
-    
+
     @classmethod
     def print_alive(cls) -> None:
         return [
@@ -32,17 +32,15 @@ class Animal:
 class Herbivore(Animal):
     def hide(self) -> bool:
         self.hidden = not self.hidden
-        return self.hiden   
+        return self.hidden
 
 
 class Carnivore(Animal):
     def bite(self, victim: Herbivore) -> bool:
         if isinstance(victim, Carnivore):
-            print('Carnivore cannot bite by another carnivore!')
-        elif not victim.hiden:
+            print("Carnivore cannot bite by another carnivore!")
+        elif not victim.hidden:
             victim.health -= 50
             if victim.health <= 0:
                 victim.health = 0
                 victim.die()
-        elif victim.hidden:
-            victim.health = 100
